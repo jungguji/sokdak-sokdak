@@ -1,4 +1,4 @@
-package com.jgji.sokdak.domain.member;
+package com.jgji.sokdak.domain.member.domain;
 
 import com.jgji.sokdak.global.model.BaseEntity;
 import lombok.AccessLevel;

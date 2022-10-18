@@ -1,4 +1,4 @@
-package com.jgji.sokdak.domain.member;
+package com.jgji.sokdak.domain.member.domain;
 
 import lombok.AccessLevel;
 import lombok.Builder;

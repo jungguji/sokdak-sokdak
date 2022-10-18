@@ -1,4 +1,4 @@
-package com.jgji.sokdak.domain.reply;
+package com.jgji.sokdak.domain.reply.domain;
 
 import com.jgji.sokdak.global.model.BaseEntity;
 import lombok.AccessLevel;
@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.annotation.processing.Generated;
 import javax.persistence.*;
 
 @Getter
