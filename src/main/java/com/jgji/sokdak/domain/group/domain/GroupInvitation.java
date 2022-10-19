@@ -44,9 +44,9 @@ public class GroupInvitation extends BaseEntity {
     private long invitedMemberId;
 
     @Builder
-    public GroupInvitation(String code, boolean used, long memberId, long groupId, long invitedMemberId) {
+    public GroupInvitation(String code, long memberId, long groupId, long invitedMemberId) {
         this.code = code;
-        this.used = used;
+        this.used = false;
         this.memberId = memberId;
         this.groupId = groupId;
         this.invitedMemberId = invitedMemberId;
@@ -56,5 +56,9 @@ public class GroupInvitation extends BaseEntity {
     private void setExpirationTime() {
         LocalDateTime createdDateTime = super.getCreatedDateTime();
         this.expirationTime = createdDateTime.plusDays(1);
+    }
+
+    public void invitationComplete() {
+        this.used = used;
     }
 }
