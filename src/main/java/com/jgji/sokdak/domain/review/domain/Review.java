@@ -21,7 +21,7 @@ public class Review {
     @Column(name = "id", nullable = false, unique = true)
     private long id;
 
-    @Column(name = "content", nullable = false)
+    @Column(name = "content")
     private String content;
 
     @Column(name = "grade", nullable = false)

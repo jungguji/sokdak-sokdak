@@ -22,8 +22,8 @@ public class Reply extends BaseEntity {
     @Column(name = "comment", nullable = false)
     private String comment;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "target_type", nullable = false)
+    @Enumerated(EnumType.STRING)
     private ReplyTargetType replyTargetType;
 
     @Column(name = "target_id", nullable = false)
