@@ -1,4 +1,4 @@
-package com.jgji.sokdak.domain.review.domain;
+package com.jgji.sokdak.domain.diary.domain;
 
 import com.jgji.sokdak.global.model.BaseEntity;
 import lombok.AccessLevel;
@@ -10,9 +10,9 @@ import javax.persistence.*;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "review_image")
+@Table(name = "diary_image")
 @Entity
-public class ReviewImage extends BaseEntity {
+public class DiaryImage extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,12 +23,12 @@ public class ReviewImage extends BaseEntity {
     private String image;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "review_id", nullable = false)
-    private Review review;
+    @Column(name = "diary_id", nullable = false)
+    private Diary diary;
 
     @Builder
-    public ReviewImage(String image, Review review) {
+    public DiaryImage(String image, Diary diary) {
         this.image = image;
-        this.review = review;
+        this.diary = diary;
     }
 }
