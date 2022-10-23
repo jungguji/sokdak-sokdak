@@ -1,5 +1,6 @@
 package com.jgji.sokdak.domain.calendar.domain;
 
+import com.jgji.sokdak.domain.share.domain.CalendarShare;
 import com.jgji.sokdak.global.model.BaseEntity;
 import lombok.AccessLevel;
 import lombok.Builder;

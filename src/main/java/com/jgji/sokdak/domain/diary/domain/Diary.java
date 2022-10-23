@@ -1,5 +1,6 @@
 package com.jgji.sokdak.domain.diary.domain;
 
+import com.jgji.sokdak.domain.share.domain.DiaryShare;
 import com.jgji.sokdak.global.model.BaseEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -42,16 +43,16 @@ public class Diary extends BaseEntity {
 
     @OneToMany(mappedBy = "diary", cascade = CascadeType.ALL)
     @Column(name = "share_id")
-    private List<DiaryGroupShare> diaryGroupShares = new ArrayList<>();
+    private List<DiaryShare> diaryShares = new ArrayList<>();
 
     @Builder
-    public Diary(String content, Visible visible, long memberId, long placeId, long calendarId, List<DiaryImage> diaryImages, List<DiaryGroupShare> diaryGroupShares) {
+    public Diary(String content, Visible visible, long memberId, long placeId, long calendarId, List<DiaryImage> diaryImages, List<DiaryShare> diaryShares) {
         this.content = content;
         this.visible = visible;
         this.memberId = memberId;
         this.placeId = placeId;
         this.calendarId = calendarId;
         this.diaryImages = diaryImages;
-        this.diaryGroupShares = diaryGroupShares;
+        this.diaryShares = diaryShares;
     }
 }
