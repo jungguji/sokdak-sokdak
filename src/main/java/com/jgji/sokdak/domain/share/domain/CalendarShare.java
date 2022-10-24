@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class CalendarShare extends Share {
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "calendar_id", nullable = false)
+    @JoinColumn(name = "calendar_id", nullable = false)
     private Calendar calendar;
 
     @Builder

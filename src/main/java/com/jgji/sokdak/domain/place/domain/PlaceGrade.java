@@ -23,19 +23,16 @@ public class PlaceGrade extends BaseEntity {
     @Column(name = "grade_total")
     private BigDecimal gradeTotal; // 그룹별 평점 평균
 
-    @Column(name = "place_id", nullable = false)
-    private long placeId;
-
     @Column(name = "group_id", nullable = false)
     private long groupId;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "place_id", nullable = false)
     private Place place;
 
     @Builder
-    public PlaceGrade(BigDecimal gradeTotal, long placeId, long groupId, Place place) {
+    public PlaceGrade(BigDecimal gradeTotal, long groupId, Place place) {
         this.gradeTotal = gradeTotal;
-        this.placeId = placeId;
         this.groupId = groupId;
         this.place = place;
     }
