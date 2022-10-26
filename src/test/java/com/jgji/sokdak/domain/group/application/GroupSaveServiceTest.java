@@ -4,23 +4,25 @@ import com.jgji.sokdak.domain.group.domain.Group;
 import com.jgji.sokdak.domain.group.domain.GroupRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 
+@ExtendWith(MockitoExtension.class)
 class GroupSaveServiceTest {
 
-    @Autowired
-    private GroupSaveService groupSaveService;
 
     private final GroupRepository groupRepository = mock(GroupRepository.class);
 
+    private GroupSaveService groupSaveService;
+
     @BeforeEach
     void setUp() {
-
+        groupSaveService = new GroupSaveService(groupRepository);
     }
 
     @Test
@@ -34,6 +36,7 @@ class GroupSaveServiceTest {
         given(groupRepository.save(any())).willReturn(given);
 
         //when
+
         Group when = this.groupSaveService.save(given);
 
         //than
