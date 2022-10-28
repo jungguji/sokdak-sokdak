@@ -1,19 +1,12 @@
 package com.jgji.sokdak.domain.group.domain;
 
 import com.jgji.sokdak.global.model.BaseEntity;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@ToString
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "group_invitation")
@@ -28,7 +21,7 @@ public class GroupInvitation extends BaseEntity {
     @Column(name = "code", nullable = false)
     private String code;
 
-    @Column(name = "used", nullable = false, columnDefinition = "bit(1) default false")
+    @Column(name = "used", nullable = false)
     private boolean used;
 
     @Column(name = "expiration_time", nullable = false)
@@ -40,25 +33,25 @@ public class GroupInvitation extends BaseEntity {
     @Column(name = "group_id", nullable = false)
     private long groupId;
 
-    @Column(name = "invited_member_id", nullable = false)
-    private long invitedMemberId;
+    @Column(name = "invited_member_id")
+    private Long invitedMemberId;
 
     @Builder
-    public GroupInvitation(String code, long memberId, long groupId, long invitedMemberId) {
+    public GroupInvitation(String code, long memberId, long groupId) {
         this.code = code;
         this.used = false;
         this.memberId = memberId;
         this.groupId = groupId;
-        this.invitedMemberId = invitedMemberId;
+        this.invitedMemberId = null;
         setExpirationTime();
     }
 
     private void setExpirationTime() {
-        LocalDateTime createdDateTime = super.getCreatedDateTime();
+        LocalDateTime createdDateTime = LocalDateTime.now();
         this.expirationTime = createdDateTime.plusDays(1);
     }
 
-    public void invitationComplete() {
-        this.used = used;
+    public void use() {
+        this.used = true;
     }
 }
