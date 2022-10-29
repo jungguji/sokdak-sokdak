@@ -2,6 +2,7 @@ package com.jgji.sokdak.domain.group.domain;
 
 import com.jgji.sokdak.global.model.BaseEntity;
 import lombok.*;
+import org.apache.commons.lang3.RandomStringUtils;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -53,5 +54,9 @@ public class GroupInvitation extends BaseEntity {
 
     public void use() {
         this.used = true;
+    }
+
+    public static String generateCode() {
+        return RandomStringUtils.randomAlphanumeric(8);
     }
 }

@@ -10,4 +10,5 @@ import java.util.List;
 public interface GroupInvitationRepository extends JpaRepository<GroupInvitation, Long> {
 
     List<GroupInvitation> findByMemberIdAndGroupIdAndExpirationTimeGreaterThanEqualAndUsedFalse(long memberId, long groupId, LocalDateTime now);
+    List<GroupInvitation> findByExpirationTimeGreaterThanEqualAndUsedFalse(LocalDateTime now);
 }
