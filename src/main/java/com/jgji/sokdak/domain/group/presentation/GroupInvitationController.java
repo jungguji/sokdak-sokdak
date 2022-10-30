@@ -20,7 +20,7 @@ public class GroupInvitationController {
     @ResponseStatus(HttpStatus.OK)
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public String generateCode(@RequestBody @Valid @NotNull Long groupId) {
-        Member member = TempMember.getMember();
+        Member member = TempMember.getGroupLeader();
         return this.groupInvitationFacade.save(member, groupId);
     }
 }
