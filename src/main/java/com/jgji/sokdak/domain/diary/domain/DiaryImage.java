@@ -23,7 +23,7 @@ public class DiaryImage extends BaseEntity {
     private String image;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "diary_id", nullable = false)
+    @JoinColumn(name = "diary_id", nullable = false)
     private Diary diary;
 
     @Builder

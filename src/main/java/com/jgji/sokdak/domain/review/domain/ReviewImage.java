@@ -23,7 +23,7 @@ public class ReviewImage extends BaseEntity {
     private String image;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "review_id", nullable = false)
+    @JoinColumn(name = "review_id", nullable = false)
     private Review review;
 
     @Builder

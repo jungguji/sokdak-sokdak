@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class DiaryShare extends Share {
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "diary_id", nullable = false)
+    @JoinColumn(name = "diary_id", nullable = false)
     private Diary diary;
 
     @Builder
