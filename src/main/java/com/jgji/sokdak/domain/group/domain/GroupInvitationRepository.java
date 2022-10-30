@@ -11,4 +11,5 @@ public interface GroupInvitationRepository extends JpaRepository<GroupInvitation
 
     List<GroupInvitation> findByMemberIdAndGroupIdAndExpirationTimeGreaterThanEqualAndUsedFalse(long memberId, long groupId, LocalDateTime now);
     List<GroupInvitation> findByExpirationTimeGreaterThanEqualAndUsedFalse(LocalDateTime now);
+    GroupInvitation findByCodeAndExpirationTimeGreaterThanEqualAndUsedFalse(String code, LocalDateTime now);
 }

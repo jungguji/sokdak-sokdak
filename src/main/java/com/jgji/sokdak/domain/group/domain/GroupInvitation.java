@@ -1,5 +1,6 @@
 package com.jgji.sokdak.domain.group.domain;
 
+import com.jgji.sokdak.domain.member.domain.Member;
 import com.jgji.sokdak.global.model.BaseEntity;
 import lombok.*;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -58,5 +59,10 @@ public class GroupInvitation extends BaseEntity {
 
     public static String generateCode() {
         return RandomStringUtils.randomAlphanumeric(8);
+    }
+
+    public void join(Member member) {
+        this.used = true;
+        this.invitedMemberId = member.getId();
     }
 }

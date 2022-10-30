@@ -32,7 +32,7 @@ class GroupFacadeTest {
     @Test
     void create() throws IOException {
         //given
-        Member member = TempMember.getMember();
+        Member member = TempMember.getGroupLeader();
 
         this.memberRepository.save(member);
 
