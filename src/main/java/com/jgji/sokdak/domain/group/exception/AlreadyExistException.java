@@ -3,9 +3,9 @@ package com.jgji.sokdak.domain.group.exception;
 import com.jgji.sokdak.global.exception.BusinessException;
 import com.jgji.sokdak.global.exception.ErrorCode;
 
-public class GroupInvitationException extends BusinessException {
+public class AlreadyExistException extends BusinessException {
 
-    public GroupInvitationException() {
+    public AlreadyExistException() {
         super(ErrorCode.CODE_ALREADY_EXIST);
     }
 }

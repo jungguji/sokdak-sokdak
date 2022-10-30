@@ -1,0 +1,7 @@
+### 초대코드 생성
+POST http://localhost:8080/invitation
+Content-Type: application/json
+
+3
+
+###

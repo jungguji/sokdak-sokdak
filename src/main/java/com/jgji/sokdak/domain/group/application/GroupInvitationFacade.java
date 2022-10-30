@@ -10,13 +10,18 @@ import org.springframework.stereotype.Component;
 public class GroupInvitationFacade {
 
     private final GroupInvitationSaveService groupInvitationSaveService;
+    private final GroupInvitationApplicationService groupInvitationApplicationService;
 
-    public void save(Member member, long groupId) {
+    public String save(Member member, long groupId) {
+        String code = this.groupInvitationApplicationService.generateCode(member, groupId);
+
         GroupInvitation groupInvitation = GroupInvitation.builder()
+                .code(code)
                 .memberId(member.getId())
                 .groupId(groupId)
                 .build();
 
         this.groupInvitationSaveService.save(groupInvitation);
+        return code;
     }
 }
