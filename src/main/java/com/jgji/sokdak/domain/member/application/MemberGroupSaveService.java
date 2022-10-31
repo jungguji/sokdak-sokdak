@@ -16,4 +16,16 @@ public class MemberGroupSaveService {
     public MemberGroup save(MemberGroup memberGroup) {
         return this.memberGroupRepository.save(memberGroup);
     }
+
+    public MemberGroup connectGroup(long memberId, long groupId) {
+        MemberGroup memberGroup = this.getMemberGroup(memberId, groupId);
+        return this.save(memberGroup);
+    }
+
+    private MemberGroup getMemberGroup(long memberId, long groupId) {
+        return MemberGroup.builder()
+                .memberId(memberId)
+                .groupId(groupId)
+                .build();
+    }
 }
