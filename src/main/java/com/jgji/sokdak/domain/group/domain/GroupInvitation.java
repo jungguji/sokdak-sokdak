@@ -61,7 +61,7 @@ public class GroupInvitation extends BaseEntity {
         return RandomStringUtils.randomAlphanumeric(8);
     }
 
-    public void join(Member member) {
+    public void use(Member member) {
         this.used = true;
         this.invitedMemberId = member.getId();
     }

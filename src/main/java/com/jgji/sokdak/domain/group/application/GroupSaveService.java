@@ -13,12 +13,22 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class GroupSaveService {
 
-    private final GroupRepository groupRepository;
     private final MemberGroupSaveService memberGroupSaveService;
+    private final GroupFindService groupFindService;
+
+    private final GroupRepository groupRepository;
+
 
     public Group save(Member member, Group group) {
         this.groupRepository.save(group);
         this.memberGroupSaveService.connectGroup(member.getId(), group.getId());
+
+        return group;
+    }
+
+    public Group join(long memberId, long groupId) {
+        Group group = this.groupFindService.findById(groupId);
+        this.memberGroupSaveService.connectGroup(memberId, group.getId());
 
         return group;
     }

@@ -1,6 +1,7 @@
 package com.jgji.sokdak.domain.group.application;
 
 import com.jgji.sokdak.domain.group.domain.Group;
+import com.jgji.sokdak.domain.group.domain.GroupInvitation;
 import com.jgji.sokdak.domain.group.presentation.dto.GroupCreateRequest;
 import com.jgji.sokdak.domain.group.presentation.dto.GroupJoinResponse;
 import com.jgji.sokdak.domain.member.domain.Member;
@@ -28,7 +29,9 @@ public class GroupFacade {
 
     public GroupJoinResponse join(Member member, String code) {
         LocalDateTime now = LocalDateTime.now();
-        Group joinGroup = this.groupInvitationSaveService.join(member, code, now);
+        GroupInvitation useInvitation = this.groupInvitationSaveService.use(member, code, now);
+
+        Group joinGroup = this.groupSaveService.join(member.getId(), useInvitation.getGroupId());
 
         return GroupJoinResponse.builder()
                 .groupId(joinGroup.getId())
