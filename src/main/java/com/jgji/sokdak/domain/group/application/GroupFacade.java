@@ -2,8 +2,10 @@ package com.jgji.sokdak.domain.group.application;
 
 import com.jgji.sokdak.domain.group.domain.Group;
 import com.jgji.sokdak.domain.group.domain.GroupInvitation;
+import com.jgji.sokdak.domain.group.exception.ConfirmationPhraseMismatchException;
 import com.jgji.sokdak.domain.group.presentation.dto.GroupCreateRequest;
 import com.jgji.sokdak.domain.group.presentation.dto.GroupJoinResponse;
+import com.jgji.sokdak.domain.group.presentation.dto.GroupSecessionRequest;
 import com.jgji.sokdak.domain.member.domain.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -18,6 +20,10 @@ public class GroupFacade {
     private final GroupSaveService groupSaveService;
     private final GroupInvitationSaveService groupInvitationSaveService;
 
+    private final GroupFindService groupFindService;
+
+    private final static String CONFIRMATION_SUFFIX = "탈퇴하기";
+
     public long create(Member member, GroupCreateRequest request, MultipartFile multipartFile) {
         Group group = request.toEntity(multipartFile.getOriginalFilename());
 
@@ -25,7 +31,6 @@ public class GroupFacade {
 
         return group.getId();
     }
-
 
     public GroupJoinResponse join(Member member, String code) {
         LocalDateTime now = LocalDateTime.now();
@@ -37,5 +42,24 @@ public class GroupFacade {
                 .groupId(joinGroup.getId())
                 .groupName(joinGroup.getName())
                 .build();
+    }
+
+    public String secession(Member member, GroupSecessionRequest request) {
+
+        Group group = this.groupFindService.findById(request.getGroupId());
+
+        confirmationCheck(request, group);
+
+        this.groupSaveService.secession(member.getId(), group.getId());
+
+        return group.getName();
+    }
+
+    private void confirmationCheck(GroupSecessionRequest request, Group group) {
+        final String confirmation = group.getName() + " " + CONFIRMATION_SUFFIX;
+
+        if (!confirmation.equals(request.getConfirmation())) {
+            throw new ConfirmationPhraseMismatchException();
+        }
     }
 }

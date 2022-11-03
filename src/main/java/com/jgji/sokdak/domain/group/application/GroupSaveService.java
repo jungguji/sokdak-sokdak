@@ -32,4 +32,11 @@ public class GroupSaveService {
 
         return group;
     }
+
+    public Group secession(long memberId, long groupId) {
+        Group group = this.groupFindService.findByIdAndMemberId(memberId, groupId);
+        this.memberGroupSaveService.disconnectGroup(memberId, group.getId());
+
+        return group;
+    }
 }

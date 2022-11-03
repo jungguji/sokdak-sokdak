@@ -9,7 +9,11 @@ public enum ErrorCode {
     INVALID_CODE(HttpStatus.BAD_REQUEST, "GI002", "유효하지 않은 초대 코드 입니다."),
 
     // Group
-    GROUP_NOT_FOUND(HttpStatus.BAD_REQUEST, "G001", "존재하지 않는 모임입니다.")
+    GROUP_NOT_FOUND(HttpStatus.BAD_REQUEST, "G001", "존재하지 않는 모임입니다."),
+    CONFIRMATION_PHRASE_MISMATCH(HttpStatus.BAD_REQUEST, "G002", "탈퇴 확인 문구를 정확히 입력해주세요."),
+
+    //Member
+    UNJOINED_GROUP(HttpStatus.BAD_REQUEST, "M002", "가입되지 않은 모임입니다.")
 
     ;
 
