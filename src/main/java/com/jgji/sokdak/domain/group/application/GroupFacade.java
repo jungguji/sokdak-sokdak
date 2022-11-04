@@ -7,6 +7,7 @@ import com.jgji.sokdak.domain.group.presentation.dto.GroupCreateRequest;
 import com.jgji.sokdak.domain.group.presentation.dto.GroupJoinResponse;
 import com.jgji.sokdak.domain.group.presentation.dto.GroupSecessionRequest;
 import com.jgji.sokdak.domain.member.domain.Member;
+import com.jgji.sokdak.global.util.MessageUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,8 +22,6 @@ public class GroupFacade {
     private final GroupInvitationSaveService groupInvitationSaveService;
 
     private final GroupFindService groupFindService;
-
-    private final static String CONFIRMATION_SUFFIX = "탈퇴하기";
 
     public long create(Member member, GroupCreateRequest request, MultipartFile multipartFile) {
         Group group = request.toEntity(multipartFile.getOriginalFilename());
@@ -56,7 +55,7 @@ public class GroupFacade {
     }
 
     private void confirmationCheck(GroupSecessionRequest request, Group group) {
-        final String confirmation = group.getName() + " " + CONFIRMATION_SUFFIX;
+        final String confirmation = MessageUtils.getMessage("group.secession", new String[]{group.getName()});
 
         if (!confirmation.equals(request.getConfirmation())) {
             throw new ConfirmationPhraseMismatchException();
