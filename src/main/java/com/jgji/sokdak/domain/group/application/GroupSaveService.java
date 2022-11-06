@@ -2,8 +2,10 @@ package com.jgji.sokdak.domain.group.application;
 
 import com.jgji.sokdak.domain.group.domain.Group;
 import com.jgji.sokdak.domain.group.domain.GroupRepository;
+import com.jgji.sokdak.domain.member.application.MemberGroupFindService;
 import com.jgji.sokdak.domain.member.application.MemberGroupSaveService;
 import com.jgji.sokdak.domain.member.domain.Member;
+import com.jgji.sokdak.domain.member.domain.MemberGroup;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +17,7 @@ public class GroupSaveService {
 
     private final MemberGroupSaveService memberGroupSaveService;
     private final GroupFindService groupFindService;
+    private final MemberGroupFindService memberGroupFindService;
 
     private final GroupRepository groupRepository;
 
@@ -34,7 +37,8 @@ public class GroupSaveService {
     }
 
     public Group secession(long memberId, long groupId) {
-        Group group = this.groupFindService.findByIdAndMemberId(memberId, groupId);
+        MemberGroup memberGroup = this.memberGroupFindService.findByMemberIdAndGroupId(memberId, groupId);
+        Group group = this.groupFindService.findById(memberGroup.getGroupId());
         this.memberGroupSaveService.disconnectGroup(memberId, group.getId());
 
         return group;

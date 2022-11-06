@@ -4,6 +4,11 @@ spring:
     username: sa
     password:
     driver-class-name: org.h2.Driver
+
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:h2/data.sql

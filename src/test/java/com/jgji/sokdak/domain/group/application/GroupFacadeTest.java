@@ -1,8 +1,11 @@
 package com.jgji.sokdak.domain.group.application;
 
+import com.jgji.sokdak.domain.group.domain.Group;
 import com.jgji.sokdak.domain.group.presentation.dto.GroupCreateRequest;
-import com.jgji.sokdak.domain.member.domain.*;
-import com.jgji.sokdak.global.model.TempMember;
+import com.jgji.sokdak.domain.member.domain.Member;
+import com.jgji.sokdak.domain.member.domain.MemberGroup;
+import com.jgji.sokdak.domain.member.domain.MemberGroupRepository;
+import com.jgji.sokdak.domain.member.domain.MemberRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,21 +35,20 @@ class GroupFacadeTest {
     @Test
     void create() throws IOException {
         //given
-        Member member = TempMember.getGroupLeader();
-
-        this.memberRepository.save(member);
+        Member member = this.memberRepository.findById(1L).get();
 
         MockMultipartFile mockMultipartFile = new MockMultipartFile("test", "originName", "txt", new FileInputStream("C:\\Users\\eleme\\Documents\\b22fece4-ab44-4449-9aed-cafc95681ee9.txt"));
 
+        String name = "창동 프랜드";
         GroupCreateRequest given = GroupCreateRequest.builder()
-                .name("창동 프랜드")
+                .name(name)
                 .build();
 
         //when
-        long id = this.groupFacade.create(member, given, mockMultipartFile);
+        Group when = this.groupFacade.create(member, given, mockMultipartFile);
 
         //then
-        assertThat(1).isEqualTo(id);
+        assertThat(name).isEqualTo(when.getName());
 
         List<MemberGroup> all = this.memberGroupRepository.findAll();
 

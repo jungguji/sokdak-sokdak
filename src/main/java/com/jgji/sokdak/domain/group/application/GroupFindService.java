@@ -16,9 +16,4 @@ public class GroupFindService {
         return this.groupRepository.findById(id)
                 .orElseThrow(GroupNotFoundException::new);
     }
-
-    public Group findByIdAndMemberId(long id, long memberId) {
-        return this.groupRepository.findByIdAndMemberId(id, memberId)
-                .orElseThrow(GroupNotFoundException::new);
-    }
 }

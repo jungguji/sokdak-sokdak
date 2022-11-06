@@ -29,7 +29,7 @@ public class GroupController {
     public Long create(@RequestPart(name = "group") @Valid GroupCreateRequest groupCreateRequest
             , @RequestPart(name = "logoFile") MultipartFile logoImage) {
 
-        return this.groupFacade.create(TempMember.getGroupLeader(), groupCreateRequest, logoImage);
+        return this.groupFacade.create(TempMember.getGroupLeader(), groupCreateRequest, logoImage).getId();
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)

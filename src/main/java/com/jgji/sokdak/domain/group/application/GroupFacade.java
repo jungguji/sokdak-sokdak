@@ -23,12 +23,12 @@ public class GroupFacade {
 
     private final GroupFindService groupFindService;
 
-    public long create(Member member, GroupCreateRequest request, MultipartFile multipartFile) {
+    public Group create(Member member, GroupCreateRequest request, MultipartFile multipartFile) {
         Group group = request.toEntity(multipartFile.getOriginalFilename());
 
         this.groupSaveService.save(member, group);
 
-        return group.getId();
+        return group;
     }
 
     public GroupJoinResponse join(Member member, String code) {
