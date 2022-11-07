@@ -30,7 +30,7 @@ class GroupInvitationRepositoryTest {
         List<GroupInvitation> list = this.groupInvitationRepository.findByMemberIdAndGroupIdAndExpirationTimeGreaterThanEqualAndUsedFalse(1, 1, LocalDateTime.now());
 
         for (GroupInvitation groupInvitation : list) {
-            System.out.println("groupInvitation.toString() = " + groupInvitation.toString());
+            System.out.println("groupInvitation.toString() = " + groupInvitation.getCode());
         }
     }
 }

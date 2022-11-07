@@ -52,7 +52,8 @@ class GroupFacadeTest {
 
         List<MemberGroup> all = this.memberGroupRepository.findAll();
 
-        assertThat(1).isEqualTo(all.size());
-
+        assertThat(all.size()).isEqualTo(1);
+        assertThat(all.get(0).getGroupId()).isEqualTo(when.getId());
+        assertThat(all.get(0).getMemberId()).isEqualTo(member.getId());
     }
 }

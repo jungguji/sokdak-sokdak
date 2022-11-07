@@ -1,2 +1,2 @@
-insert into member(email, nickname, password, profile_image) values("asdasf", "연못지", "qweqweqwe", "https://google.co.kr");
-insert into member(email, nickname, password, profile_image) values("test@naver.com", "테스트트", "qweqweqwe", "https://google.co.kr");
+insert into member(email, nickname, password, profile_image, create_date, update_date) values('jg.ji@gmail.com', '연못지', 'qweqweqwe', 'https://google.co.kr', now(), now());
+insert into member(email, nickname, password, profile_image, create_date, update_date) values('test@naver.com', '테스트트', 'qweqweqwe', 'https://google.co.kr', now(), now());
