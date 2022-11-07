@@ -11,10 +11,16 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class MemberGroupSaveService {
 
+    private final MemberGroupFindService memberGroupFindService;
+
     private final MemberGroupRepository memberGroupRepository;
 
     public MemberGroup save(MemberGroup memberGroup) {
         return this.memberGroupRepository.save(memberGroup);
+    }
+
+    public void delete(MemberGroup memberGroup) {
+        this.memberGroupRepository.delete(memberGroup);
     }
 
     public MemberGroup connectGroup(long memberId, long groupId) {
@@ -27,5 +33,10 @@ public class MemberGroupSaveService {
                 .memberId(memberId)
                 .groupId(groupId)
                 .build();
+    }
+
+    public void disconnectGroup(long memberId, long groupId) {
+        MemberGroup memberGroup = this.memberGroupFindService.findByMemberIdAndGroupId(memberId, groupId);
+        this.delete(memberGroup);
     }
 }
