@@ -6,6 +6,7 @@ import com.jgji.sokdak.domain.group.exception.AlreadyExistException;
 import com.jgji.sokdak.domain.member.domain.Member;
 import com.jgji.sokdak.domain.member.domain.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -26,10 +27,7 @@ class GroupInvitationApplicationServiceTest {
     @Autowired
     private MemberRepository memberRepository;
 
-    @Autowired
-    private GroupFindService groupFindService;
-
-    @Autowired
+        @Autowired
     private GroupInvitationRepository groupInvitationRepository;
 
     private Member member;
@@ -65,5 +63,10 @@ class GroupInvitationApplicationServiceTest {
         //when
         assertThrows(AlreadyExistException.class, () ->
                 this.groupInvitationApplicationService.generateCode(member, 1L));
+    }
+
+    @AfterEach
+    void tearDown() {
+        this.groupInvitationRepository.deleteAll();
     }
 }
