@@ -13,8 +13,8 @@ public enum ErrorCode {
     CONFIRMATION_PHRASE_MISMATCH(HttpStatus.BAD_REQUEST, "G002", "탈퇴 확인 문구를 정확히 입력해주세요."),
 
     //Member
-    UNJOINED_GROUP(HttpStatus.BAD_REQUEST, "M002", "가입되지 않은 모임입니다.")
-
+    UNJOINED_GROUP(HttpStatus.BAD_REQUEST, "M002", "가입되지 않은 모임입니다."),
+    ALREADY_JOINED(HttpStatus.BAD_REQUEST, "M003", "이미 가입된 모임입니다.")
     ;
 
     private final HttpStatus status;

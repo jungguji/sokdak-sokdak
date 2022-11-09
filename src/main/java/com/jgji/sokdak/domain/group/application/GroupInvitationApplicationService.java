@@ -1,8 +1,6 @@
 package com.jgji.sokdak.domain.group.application;
 
 import com.jgji.sokdak.domain.group.domain.GroupInvitation;
-import com.jgji.sokdak.domain.group.domain.GroupInvitationRepository;
-import com.jgji.sokdak.domain.group.exception.AlreadyExistException;
 import com.jgji.sokdak.domain.member.domain.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,27 +12,26 @@ import java.util.List;
 @Service
 public class GroupInvitationApplicationService {
 
-    private final GroupInvitationRepository groupInvitationRepository;
+    private final GroupInvitationSaveService groupInvitationSaveService;
+    private final GroupInvitationFindService groupInvitationFindService;
 
-    public String generateCode(Member member, long groupId) {
-        LocalDateTime now = LocalDateTime.now();
+    public String generateCode(Member member, long groupId, LocalDateTime now) {
+        String code = generateCode(now);
 
-        alreadyExistCode(member, groupId, now);
+        GroupInvitation groupInvitation = GroupInvitation.builder()
+                .code(code)
+                .memberId(member.getId())
+                .groupId(groupId)
+                .build();
 
-        return generateCode(now);
-    }
+        this.groupInvitationSaveService.save(groupInvitation);
 
-    private void alreadyExistCode(Member member, long groupId, LocalDateTime now) {
-        boolean alreadyExistCode = this.groupInvitationRepository.findByMemberIdAndGroupIdAndExpirationTimeGreaterThanEqualAndUsedFalse(member.getId(), groupId, now).size() > 0;
-
-        if (alreadyExistCode) {
-            throw new AlreadyExistException();
-        }
+        return groupInvitation.getCode();
     }
 
     private String generateCode(LocalDateTime now) {
         String invitationCode = GroupInvitation.generateCode();
-        List<GroupInvitation> invitations = this.groupInvitationRepository.findByExpirationTimeGreaterThanEqualAndUsedFalse(now);
+        List<GroupInvitation> invitations = this.groupInvitationFindService.findByExpirationTimeGreaterThanEqualAndUsedFalse(now);
 
         while (invitations.contains(invitationCode)) {
             invitationCode = GroupInvitation.generateCode();

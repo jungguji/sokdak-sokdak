@@ -6,14 +6,19 @@ import com.jgji.sokdak.domain.group.exception.ConfirmationPhraseMismatchExceptio
 import com.jgji.sokdak.domain.group.presentation.dto.GroupCreateRequest;
 import com.jgji.sokdak.domain.group.presentation.dto.GroupJoinResponse;
 import com.jgji.sokdak.domain.group.presentation.dto.GroupSecessionRequest;
+import com.jgji.sokdak.domain.member.application.MemberGroupFindService;
 import com.jgji.sokdak.domain.member.domain.Member;
+import com.jgji.sokdak.domain.member.exception.AlreadyJoinedException;
+import com.jgji.sokdak.domain.member.exception.UnjoinedGroupException;
 import com.jgji.sokdak.global.util.MessageUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 
+@Transactional
 @RequiredArgsConstructor
 @Component
 public class GroupFacade {
@@ -22,6 +27,7 @@ public class GroupFacade {
     private final GroupInvitationSaveService groupInvitationSaveService;
 
     private final GroupFindService groupFindService;
+    private final MemberGroupFindService memberGroupFindService;
 
     public Group create(Member member, GroupCreateRequest request, MultipartFile multipartFile) {
         Group group = request.toEntity(multipartFile.getOriginalFilename());
@@ -33,7 +39,14 @@ public class GroupFacade {
 
     public GroupJoinResponse join(Member member, String code) {
         LocalDateTime now = LocalDateTime.now();
+
         GroupInvitation useInvitation = this.groupInvitationSaveService.use(member, code, now);
+
+        try {
+            this.memberGroupFindService.findByMemberIdAndGroupId(member.getId(), useInvitation.getGroupId());
+            throw new AlreadyJoinedException();
+        } catch (UnjoinedGroupException e) {
+        }
 
         Group joinGroup = this.groupSaveService.join(member.getId(), useInvitation.getGroupId());
 

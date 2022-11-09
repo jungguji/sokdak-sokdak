@@ -13,6 +13,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDateTime;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.internal.bytebuddy.matcher.ElementMatchers.is;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -40,8 +42,9 @@ class GroupInvitationApplicationServiceTest {
     @Test
     void generateCode() {
         //given
+        LocalDateTime now = LocalDateTime.now();
         //when
-        String generateCode = this.groupInvitationApplicationService.generateCode(member, 1L);
+        String generateCode = this.groupInvitationApplicationService.generateCode(member, 1L, now);
         //then
 
         assertThat(is(generateCode.length() > 0));
@@ -60,9 +63,11 @@ class GroupInvitationApplicationServiceTest {
 
         this.groupInvitationRepository.save(groupInvitation);
 
+        LocalDateTime now = LocalDateTime.now();
+
         //when
         assertThrows(AlreadyExistException.class, () ->
-                this.groupInvitationApplicationService.generateCode(member, 1L));
+                this.groupInvitationApplicationService.generateCode(member, 1L, now));
     }
 
     @AfterEach
