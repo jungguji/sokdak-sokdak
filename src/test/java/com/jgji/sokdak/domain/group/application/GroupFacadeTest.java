@@ -3,6 +3,7 @@ package com.jgji.sokdak.domain.group.application;
 import com.jgji.sokdak.domain.group.domain.Group;
 import com.jgji.sokdak.domain.group.presentation.dto.GroupCreateRequest;
 import com.jgji.sokdak.domain.group.presentation.dto.GroupJoinResponse;
+import com.jgji.sokdak.domain.group.presentation.dto.GroupSecessionRequest;
 import com.jgji.sokdak.domain.member.domain.Member;
 import com.jgji.sokdak.domain.member.domain.MemberGroup;
 import com.jgji.sokdak.domain.member.domain.MemberGroupRepository;
@@ -106,5 +107,25 @@ class GroupFacadeTest {
 
         //when
         assertThrows(AlreadyJoinedException.class, () -> this.groupFacade.join(member, code));
+    }
+
+    @DisplayName(value = "모임 탈퇴")
+    @Test
+    void secession() {
+        //given
+        Member member = this.memberRepository.findById(3L).get();
+        String groupName = "기본 생성 모임 1호";
+
+        GroupSecessionRequest request = GroupSecessionRequest.builder()
+                .groupId(1L)
+                .confirmation(groupName + " 탈퇴하기")
+                .build();
+
+        //when
+        String secessionGroupName = this.groupFacade.secession(member, request);
+
+        //then
+        assertThat(secessionGroupName).isEqualTo(groupName);
+
     }
 }

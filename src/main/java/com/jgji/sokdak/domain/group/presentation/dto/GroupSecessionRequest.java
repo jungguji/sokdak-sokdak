@@ -3,6 +3,7 @@ package com.jgji.sokdak.domain.group.presentation.dto;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -15,4 +16,10 @@ public class GroupSecessionRequest {
 
     @NotEmpty(message = "문구를 정확히 입력해주세요.")
     private String confirmation;
+
+    @Builder
+    public GroupSecessionRequest(Long groupId, String confirmation) {
+        this.groupId = groupId;
+        this.confirmation = confirmation;
+    }
 }

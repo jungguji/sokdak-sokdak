@@ -42,11 +42,7 @@ public class GroupFacade {
 
         GroupInvitation useInvitation = this.groupInvitationSaveService.use(member, code, now);
 
-        try {
-            this.memberGroupFindService.findByMemberIdAndGroupId(member.getId(), useInvitation.getGroupId());
-            throw new AlreadyJoinedException();
-        } catch (UnjoinedGroupException e) {
-        }
+        alreadyJoined(member, useInvitation);
 
         Group joinGroup = this.groupSaveService.join(member.getId(), useInvitation.getGroupId());
 
@@ -54,6 +50,14 @@ public class GroupFacade {
                 .groupId(joinGroup.getId())
                 .groupName(joinGroup.getName())
                 .build();
+    }
+
+    private void alreadyJoined(Member member, GroupInvitation useInvitation) {
+        try {
+            this.memberGroupFindService.findByMemberIdAndGroupId(member.getId(), useInvitation.getGroupId());
+            throw new AlreadyJoinedException();
+        } catch (UnjoinedGroupException e) {
+        }
     }
 
     public String secession(Member member, GroupSecessionRequest request) {
