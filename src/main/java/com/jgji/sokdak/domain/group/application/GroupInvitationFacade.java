@@ -1,27 +1,32 @@
 package com.jgji.sokdak.domain.group.application;
 
-import com.jgji.sokdak.domain.group.domain.GroupInvitation;
+import com.jgji.sokdak.domain.group.exception.AlreadyExistException;
 import com.jgji.sokdak.domain.member.domain.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
 
 @RequiredArgsConstructor
 @Component
 public class GroupInvitationFacade {
 
-    private final GroupInvitationSaveService groupInvitationSaveService;
     private final GroupInvitationApplicationService groupInvitationApplicationService;
+    private final GroupInvitationFindService groupInvitationFindService;
 
     public String save(Member member, long groupId) {
-        String code = this.groupInvitationApplicationService.generateCode(member, groupId);
+        LocalDateTime now = LocalDateTime.now();
 
-        GroupInvitation groupInvitation = GroupInvitation.builder()
-                .code(code)
-                .memberId(member.getId())
-                .groupId(groupId)
-                .build();
+        alreadyExistCode(member, groupId, now);
 
-        this.groupInvitationSaveService.save(groupInvitation);
-        return code;
+        return this.groupInvitationApplicationService.generateCode(member, groupId, now);
+    }
+
+    private void alreadyExistCode(Member member, long groupId, LocalDateTime now) {
+        boolean alreadyExistCode = this.groupInvitationFindService.findValidCode(member, groupId, now).size() > 0;
+
+        if (alreadyExistCode) {
+            throw new AlreadyExistException();
+        }
     }
 }

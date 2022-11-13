@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class GroupSaveService {
 
     private final MemberGroupSaveService memberGroupSaveService;
+
     private final GroupFindService groupFindService;
     private final MemberGroupFindService memberGroupFindService;
 
