@@ -1,6 +1,7 @@
 package com.jgji.sokdak.domain.group.application;
 
 import com.jgji.sokdak.domain.group.domain.Group;
+import com.jgji.sokdak.domain.group.exception.ConfirmationPhraseMismatchException;
 import com.jgji.sokdak.domain.group.presentation.dto.GroupCreateRequest;
 import com.jgji.sokdak.domain.group.presentation.dto.GroupJoinResponse;
 import com.jgji.sokdak.domain.group.presentation.dto.GroupSecessionRequest;
@@ -126,6 +127,21 @@ class GroupFacadeTest {
 
         //then
         assertThat(secessionGroupName).isEqualTo(groupName);
+    }
 
+    @DisplayName(value = "탈퇴문구 불일치")
+    @Test
+    void secession_throws() {
+        //given
+        Member member = this.memberRepository.findById(3L).get();
+        String groupName = "기본 생성 모임 2호";
+
+        GroupSecessionRequest request = GroupSecessionRequest.builder()
+                .groupId(1L)
+                .confirmation(groupName + " 탈퇴하기")
+                .build();
+
+        //when
+        assertThrows(ConfirmationPhraseMismatchException.class, () -> this.groupFacade.secession(member, request));
     }
 }
