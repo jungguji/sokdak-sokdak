@@ -41,24 +41,21 @@ public class PlaceCreateRequest {
         private String zip;
 
         @NotNull
-        @Pattern(regexp = "^-?[0-9]{1,3}(?:\\.[0-9]{1,7})?$")
-        private BigDecimal latitude;
+        @Pattern(regexp = "^-?[0-9]{1,3}(?:\\.[0-9]{1,7})?")
+        private String latitude;
 
         @NotNull
-        @Pattern(regexp = "^-?[0-9]{1,3}(?:\\.[0-9]{1,7})?$")
-        private BigDecimal longitude;
+        @Pattern(regexp = "^-?[0-9]{1,3}(?:\\.[0-9]{1,7})?")
+        private String longitude;
 
         @Builder
-        public AddressForm(String road, String jibun,
-            @NotEmpty(message = "우편번호를 입력해주세요.") @Pattern(regexp = "[0-6][0-3]\\d{3}") String zip,
-            @NotNull @Pattern(regexp = "^-?[0-9]{1,3}(?:\\.[0-9]{1,7})?$") BigDecimal latitude,
-            @NotNull @Pattern(regexp = "^-?[0-9]{1,3}(?:\\.[0-9]{1,7})?$") BigDecimal longitude) {
+        public AddressForm(String road, String jibun, String zip, String latitude, String longitude) {
 
-          this.road = road;
-          this.jibun = jibun;
-          this.zip = zip;
-          this.latitude = latitude;
-          this.longitude = longitude;
+            this.road = road;
+            this.jibun = jibun;
+            this.zip = zip;
+            this.latitude = latitude;
+            this.longitude = longitude;
         }
 
         private Address toEntity() {
@@ -66,8 +63,8 @@ public class PlaceCreateRequest {
                 .road(this.road)
                 .jibun(this.jibun)
                 .zip(this.zip)
-                .latitude(this.latitude)
-                .longitude(this.longitude)
+                .latitude(new BigDecimal(this.latitude))
+                .longitude(new BigDecimal(this.longitude))
                 .build();
         }
     }
