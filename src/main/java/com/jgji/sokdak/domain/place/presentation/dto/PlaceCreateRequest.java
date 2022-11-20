@@ -21,6 +21,13 @@ public class PlaceCreateRequest {
     private AddressForm address;
     private Long categoryId;
 
+    @Builder
+    public PlaceCreateRequest(String name, AddressForm address, Long categoryId) {
+        this.name = name;
+        this.address = address;
+        this.categoryId = categoryId;
+    }
+
     public Place toEntity() {
         return Place.builder()
             .name(this.name)

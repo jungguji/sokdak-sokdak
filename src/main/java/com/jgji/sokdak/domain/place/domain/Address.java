@@ -20,7 +20,7 @@ public class Address {
     @Column(name = "jibun")
     private String jibun;
 
-    @Column(name = "zip")
+    @Column(name = "zip", nullable = false)
     private String zip;
 
     @Column(name = "latitude", nullable = false)
