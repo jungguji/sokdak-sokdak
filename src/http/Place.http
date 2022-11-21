@@ -1,0 +1,17 @@
+### 장소 생성
+POST http://localhost:8080/place
+Content-Type: application/json
+
+{
+   "name": "지중구집"
+  , "address": {
+        "road": "도로명 주소"
+        , "jibun": "지번 주소"
+        , "zip": null
+        , "latitude": "128.6521583"
+        , "longitude": "34.9070982"
+  }
+  , "categoryId": null
+}
+
+###
