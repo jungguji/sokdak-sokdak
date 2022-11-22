@@ -2,14 +2,17 @@ package com.jgji.sokdak.domain.place.presentation.dto;
 
 import com.jgji.sokdak.domain.place.domain.Place;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PlaceCreateRequest {
 
+    @NotEmpty
     private String name;
     @Valid
     private AddressForm address;

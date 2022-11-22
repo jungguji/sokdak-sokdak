@@ -21,7 +21,7 @@ public class PlaceRestController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public void create(@RequestBody @Valid PlaceCreateRequest request) {
+    public void create(@RequestBody @Valid final PlaceCreateRequest request) {
         this.placeFacade.create(request);
     }
 

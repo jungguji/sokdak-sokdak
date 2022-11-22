@@ -3,7 +3,7 @@ POST http://localhost:8080/place
 Content-Type: application/json
 
 {
-   "name": "지중구집"
+   "name": ""
   , "address": {
         "road": "도로명 주소"
         , "jibun": "지번 주소"

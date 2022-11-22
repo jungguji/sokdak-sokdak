@@ -1,8 +1,9 @@
 package com.jgji.sokdak.domain.place.application;
 
-import com.jgji.sokdak.domain.place.application.dto.ExistPlaceCheckDTO;
 import com.jgji.sokdak.domain.place.domain.Place;
 import com.jgji.sokdak.domain.place.domain.PlaceRepository;
+import java.math.BigDecimal;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +13,8 @@ public class PlaceFindService {
 
     private final PlaceRepository placeRepository;
 
-    public Place findByAddressZipAndAddressLatitudeAndAddressLongitude(ExistPlaceCheckDTO existPlaceCheckDTO) {
-        return placeRepository.findByAddressZipAndAddressLatitudeAndAddressLongitude(existPlaceCheckDTO.getZip(),
-            existPlaceCheckDTO.getLatitude(), existPlaceCheckDTO.getLongitude());
+    public Optional<Place> findByAddressZipAndAddressLatitudeAndAddressLongitude(String zip, BigDecimal latitude,
+        BigDecimal longitude) {
+        return placeRepository.findByAddressZipAndAddressLatitudeAndAddressLongitude(zip, latitude, longitude);
     }
 }
