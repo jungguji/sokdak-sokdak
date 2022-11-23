@@ -13,12 +13,12 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Email {
 
-    @jakarta.validation.constraints.Email
+    @javax.validation.constraints.Email
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
     @Builder
-    public Email(@jakarta.validation.constraints.Email String email) {
+    public Email(@javax.validation.constraints.Email String email) {
         this.email = email;
     }
 }

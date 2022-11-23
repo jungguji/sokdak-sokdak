@@ -3,11 +3,11 @@ POST http://localhost:8080/place
 Content-Type: application/json
 
 {
-   "name": ""
+   "name": "우리집"
   , "address": {
         "road": "도로명 주소"
         , "jibun": "지번 주소"
-        , "zip": null
+        , "zip": "06062"
         , "latitude": "128.6521583"
         , "longitude": "34.9070982"
   }

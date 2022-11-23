@@ -1,9 +1,9 @@
 package com.jgji.sokdak.domain.place.presentation.dto;
 
 import com.jgji.sokdak.domain.place.domain.Address;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Pattern;
 import java.math.BigDecimal;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,15 +17,15 @@ public class AddressForm {
     private String jibun;
 
     @NotEmpty(message = "우편번호를 입력해주세요.")
-    @Pattern(regexp = "[0-6][0-3]\\d{3}")
+    @Pattern(regexp = "\\d{5}", message = "올바르지 않은 우편번호 형식 입니다.")
     private String zip;
 
     @NotEmpty
-    @Pattern(regexp = "^-?[0-9]{1,3}(?:\\.[0-9]{1,7})?")
+    @Pattern(regexp = "^-?[0-9]{1,3}(?:\\.[0-9]{1,7})?", message = "올바르지 않은 좌표 형식 입니다.")
     private String latitude;
 
     @NotEmpty
-    @Pattern(regexp = "^-?[0-9]{1,3}(?:\\.[0-9]{1,7})?")
+    @Pattern(regexp = "^-?[0-9]{1,3}(?:\\.[0-9]{1,7})?", message = "올바르지 않은 좌표 형식 입니다.")
     private String longitude;
 
     @Builder
