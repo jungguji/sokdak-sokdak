@@ -28,13 +28,13 @@ public class Place extends BaseEntity {
     private Address address;
 
     @Column(name = "category_id")
-    private long categoryId;
+    private Long categoryId;
 
     @OneToMany(mappedBy = "place", cascade = CascadeType.ALL)
     private List<PlaceGrade> grades = new ArrayList<>();
 
     @Builder
-    public Place(String name, Address address, long categoryId, List<PlaceGrade> grades) {
+    public Place(String name, Address address, Long categoryId, List<PlaceGrade> grades) {
         this.name = name;
         this.address = address;
         this.categoryId = categoryId;

@@ -1,6 +1,7 @@
 package com.jgji.sokdak.domain.place.domain;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -19,7 +20,7 @@ public class Address {
     @Column(name = "jibun")
     private String jibun;
 
-    @Column(name = "zip")
+    @Column(name = "zip", nullable = false)
     private String zip;
 
     @Column(name = "latitude", nullable = false)
@@ -27,4 +28,13 @@ public class Address {
 
     @Column(name = "longitude", nullable = false)
     private BigDecimal longitude;
+
+    @Builder
+    public Address(String road, String jibun, String zip, BigDecimal latitude, BigDecimal longitude) {
+        this.road = road;
+        this.jibun = jibun;
+        this.zip = zip;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
 }

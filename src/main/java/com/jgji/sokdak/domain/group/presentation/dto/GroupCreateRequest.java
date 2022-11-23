@@ -1,8 +1,8 @@
 package com.jgji.sokdak.domain.group.presentation.dto;
 
 import com.jgji.sokdak.domain.group.domain.Group;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

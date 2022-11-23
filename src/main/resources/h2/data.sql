@@ -5,3 +5,5 @@ insert into member(email, nickname, password, profile_image, create_date, update
 insert into groups(logo, name) values('https://lh3.googleusercontent.com/ogw/AOh-ky2i3VOnTBNNQlBOE5pFtOZxT3y71YZfGlpA7Omm=s32-c-mo', '기본 생성 모임 1호');
 
 insert into member_group(member_id, group_id) values(3, 1);
+
+insert into place(name, road, zip, latitude, longitude) values('흥인지문', '서울 종로구 종로 288 흥인지문', '03119', 37.5711389, 127.0095452);
