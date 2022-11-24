@@ -1,13 +1,13 @@
 package com.jgji.sokdak.domain.place.presentation.dto;
 
 import com.jgji.sokdak.domain.place.domain.Address;
-import java.math.BigDecimal;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.geo.Point;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -43,8 +43,7 @@ public class AddressForm {
             .road(this.road)
             .jibun(this.jibun)
             .zip(this.zip)
-            .latitude(new BigDecimal(this.latitude))
-            .longitude(new BigDecimal(this.longitude))
+            .location(new Point(Double.valueOf(this.longitude), Double.valueOf(this.latitude)))
             .build();
     }
 }

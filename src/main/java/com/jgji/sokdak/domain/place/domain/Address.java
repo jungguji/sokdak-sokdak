@@ -1,13 +1,12 @@
 package com.jgji.sokdak.domain.place.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import java.math.BigDecimal;
+import org.springframework.data.geo.Point;
 
 @Embeddable
 @Getter
@@ -23,18 +22,14 @@ public class Address {
     @Column(name = "zip", nullable = false)
     private String zip;
 
-    @Column(name = "latitude", nullable = false)
-    private BigDecimal latitude;
-
-    @Column(name = "longitude", nullable = false)
-    private BigDecimal longitude;
+    @Column(name = "location", nullable = false, columnDefinition = "geometry")
+    private Point location;
 
     @Builder
-    public Address(String road, String jibun, String zip, BigDecimal latitude, BigDecimal longitude) {
+    public Address(String road, String jibun, String zip, Point location) {
         this.road = road;
         this.jibun = jibun;
         this.zip = zip;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        this.location = location;
     }
 }

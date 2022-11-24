@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class PlaceFacade {
 
-    private final PlaceSaveService placeSaveService;
+    private final PlaceService placeService;
 
     public void create(PlaceCreateRequest request) {
         Place place = request.toEntity();
 
-        this.placeSaveService.save(place);
+        this.placeService.save(place);
     }
 }

@@ -4,6 +4,9 @@ import org.springframework.http.HttpStatus;
 
 public enum ErrorCode {
 
+    // Common
+    ENTITY_NOT_FOUND(HttpStatus.NOT_FOUND, "C001", "존재하지 않는 데이터 입니다."),
+
     // Group Invitation
     CODE_ALREADY_EXIST(HttpStatus.BAD_REQUEST, "GI001", "유효한 초대 코드가 이미 존재합니다."),
     INVALID_CODE(HttpStatus.BAD_REQUEST, "GI002", "유효하지 않은 초대 코드 입니다."),

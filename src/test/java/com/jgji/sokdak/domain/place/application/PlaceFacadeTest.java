@@ -40,7 +40,7 @@ class PlaceFacadeTest {
         PlaceCreateRequest when = PlaceCreateRequest.builder()
             .name("우리집")
             .categoryId(null)
-//            .address(address)
+            .address(address)
             .build();
 
         //when
@@ -70,7 +70,7 @@ class PlaceFacadeTest {
         PlaceCreateRequest when = PlaceCreateRequest.builder()
             .name("우리집")
             .categoryId(null)
-//            .address(address)
+            .address(address)
             .build();
 
         //when
