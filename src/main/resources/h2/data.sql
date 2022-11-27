@@ -6,4 +6,4 @@ insert into groups(logo, name) values('https://lh3.googleusercontent.com/ogw/AOh
 
 insert into member_group(member_id, group_id) values(3, 1);
 
-insert into place(name, road, zip, location) values('흥인지문', '서울 종로구 종로 288 흥인지문', '03119', 'POINT(37.5711389 127.0095452)');
+insert into place(name, road, zip, location) values('흥인지문', '서울 종로구 종로 288 흥인지문', '03119', 'POINT (127.0095452 37.5711389)');

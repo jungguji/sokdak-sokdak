@@ -1,13 +1,17 @@
 package com.jgji.sokdak.domain.place.presentation.dto;
 
 import com.jgji.sokdak.domain.place.domain.Address;
+import com.jgji.sokdak.global.exception.BusinessException;
+import com.jgji.sokdak.global.exception.ErrorCode;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.geo.Point;
+import org.locationtech.jts.geom.Point;
+import org.locationtech.jts.io.ParseException;
+import org.locationtech.jts.io.WKTReader;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -39,11 +43,19 @@ public class AddressForm {
     }
 
     protected Address toEntity() {
+        String pointWKT = String.format("POINT(%s %s)", latitude, longitude);
+        Point point = null;
+        try {
+            point = (Point) new WKTReader().read(pointWKT);
+        } catch (ParseException e) {
+            throw new BusinessException(ErrorCode.ABNORMAL_COORDINATES);
+        }
+
         return Address.builder()
             .road(this.road)
             .jibun(this.jibun)
             .zip(this.zip)
-            .location(new Point(Double.valueOf(this.longitude), Double.valueOf(this.latitude)))
+            .location(point)
             .build();
     }
 }

@@ -25,8 +25,8 @@ class PlaceFacadeTest {
     void create() {
         //given
         String zipCode = "01006";
-        String latitude = "128.6521583";
-        String longitude = "34.9070982";
+        String latitude = "19";
+        String longitude = "2";
 
         AddressForm address = AddressForm.builder()
             .jibun("성루시")
@@ -35,7 +35,6 @@ class PlaceFacadeTest {
             .latitude(latitude)
             .longitude(longitude)
             .build();
-
 
         PlaceCreateRequest when = PlaceCreateRequest.builder()
             .name("우리집")

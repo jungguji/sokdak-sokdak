@@ -6,7 +6,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.geo.Point;
+import org.locationtech.jts.geom.Point;
 
 @Embeddable
 @Getter
@@ -22,7 +22,7 @@ public class Address {
     @Column(name = "zip", nullable = false)
     private String zip;
 
-    @Column(name = "location", nullable = false, columnDefinition = "geometry")
+    @Column(name = "location", columnDefinition = "GEOMETRY")
     private Point location;
 
     @Builder

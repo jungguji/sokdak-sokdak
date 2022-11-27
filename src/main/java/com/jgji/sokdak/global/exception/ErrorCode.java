@@ -20,7 +20,8 @@ public enum ErrorCode {
     ALREADY_JOINED(HttpStatus.BAD_REQUEST, "M003", "이미 가입된 모임입니다."),
 
     //Place
-    ALREADY_PLACE(HttpStatus.BAD_REQUEST, "P001", "이미 존재하는 장소입니다.")
+    ALREADY_PLACE(HttpStatus.BAD_REQUEST, "P001", "이미 존재하는 장소입니다."),
+    ABNORMAL_COORDINATES(HttpStatus.BAD_REQUEST, "P002", "비정상적인 좌표 입니다."),
     ;
 
     private final HttpStatus status;

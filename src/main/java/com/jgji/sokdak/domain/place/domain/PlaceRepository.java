@@ -1,7 +1,7 @@
 package com.jgji.sokdak.domain.place.domain;
 
 import java.util.Optional;
-import org.springframework.data.geo.Point;
+import org.locationtech.jts.geom.Point;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
