@@ -54,8 +54,8 @@ class PlaceFacadeTest {
     void create_throw() {
         //given
         String zipCode = "03119";
-        String latitude = "37.5711389";
-        String longitude = "127.0095452";
+        String latitude = "127.0095452";
+        String longitude = "37.5711389";
 
         AddressForm address = AddressForm.builder()
             .jibun("하하호호")
