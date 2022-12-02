@@ -29,8 +29,8 @@ class PlaceFacadeTest {
         String longitude = "2";
 
         AddressForm address = AddressForm.builder()
-            .jibun("성루시")
-            .road("서울시")
+            .jibun("지번 서울시")
+            .road("도로명 서울시")
             .zip(zipCode)
             .latitude(latitude)
             .longitude(longitude)

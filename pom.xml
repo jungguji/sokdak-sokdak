@@ -79,9 +79,6 @@
       <artifactId>hibernate-spatial</artifactId>
       <version>5.6.1.Final</version>
     </dependency>
-
-
-
   </dependencies>
 
   <build>

@@ -22,7 +22,7 @@ public class Address {
     @Column(name = "zip", nullable = false)
     private String zip;
 
-    @Column(name = "location", columnDefinition = "GEOMETRY")
+    @Column(name = "location", nullable = false, columnDefinition = "GEOMETRY")
     private Point location;
 
     @Builder
