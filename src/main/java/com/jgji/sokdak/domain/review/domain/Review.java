@@ -31,7 +31,7 @@ public class Review extends BaseEntity {
     @Column(name = "content")
     private String content;
 
-    @Column(name = "grade", nullable = false)
+    @Column(name = "grade", nullable = false, columnDefinition = "DECIMAL(2,1)")
     private BigDecimal grade;
 
     @Column(name = "member_id", nullable = false)
