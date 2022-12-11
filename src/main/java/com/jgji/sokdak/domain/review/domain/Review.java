@@ -53,6 +53,10 @@ public class Review extends BaseEntity {
         this.reviewImages = new ReviewImages(convertToReviewImages(images));
     }
 
+    public List<String> getImages() {
+        return this.reviewImages.getImages();
+    }
+
     private List<ReviewImage> convertToReviewImages(List<String> images) {
         List<ReviewImage> reviewImages = new ArrayList<>();
 

@@ -34,6 +34,6 @@ class ReviewRepositoryTest {
 
         this.reviewRepository.save(givenReview);
 
-        assertThat(is(!givenReview.getReviewImages().isEmpty()));
+        assertThat(is(givenReview.getReviewImages()));
     }
 }
