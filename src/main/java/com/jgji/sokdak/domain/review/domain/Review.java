@@ -32,7 +32,7 @@ public class Review extends BaseEntity {
     @Column(name = "content")
     private String content;
 
-    @Column(name = "grade", nullable = false)
+    @Column(name = "grade", nullable = false, columnDefinition = "DECIMAL(2,1)")
     private BigDecimal grade;
 
     @Column(name = "member_id", nullable = false)
@@ -51,6 +51,10 @@ public class Review extends BaseEntity {
         this.memberId = memberId;
         this.placeId = placeId;
         this.reviewImages = new ReviewImages(convertToReviewImages(images));
+    }
+
+    public List<String> getImages() {
+        return this.reviewImages.getImages();
     }
 
     private List<ReviewImage> convertToReviewImages(List<String> images) {

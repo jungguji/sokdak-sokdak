@@ -22,6 +22,9 @@ public enum ErrorCode {
     //Place
     ALREADY_PLACE(HttpStatus.BAD_REQUEST, "P001", "이미 존재하는 장소입니다."),
     ABNORMAL_COORDINATES(HttpStatus.BAD_REQUEST, "P002", "비정상적인 좌표 입니다."),
+
+    // review
+    NO_IMAGE(HttpStatus.BAD_REQUEST, "R001", "리뷰 이미지가 없습니다."),
     ;
 
     private final HttpStatus status;

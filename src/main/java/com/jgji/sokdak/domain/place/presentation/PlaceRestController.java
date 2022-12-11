@@ -19,7 +19,7 @@ public class PlaceRestController {
 
     private final PlaceFacade placeFacade;
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public void create(@RequestBody @Valid final PlaceCreateRequest request) {
         this.placeFacade.create(request);
