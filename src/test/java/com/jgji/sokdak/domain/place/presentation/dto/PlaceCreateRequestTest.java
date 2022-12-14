@@ -2,6 +2,7 @@ package com.jgji.sokdak.domain.place.presentation.dto;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
+import com.jgji.sokdak.domain.place.presentation.request.AddressForm;
 import java.util.Set;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;

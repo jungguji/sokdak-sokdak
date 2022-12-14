@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
    "name": "우리집"
-  , "address": {
+  , "addressResponse": {
         "road": "도로명 주소"
         , "jibun": "지번 주소"
         , "zip": "06062"

@@ -1,7 +1,7 @@
 package com.jgji.sokdak.domain.place.application;
 
 import com.jgji.sokdak.domain.place.domain.Place;
-import com.jgji.sokdak.domain.place.presentation.dto.PlaceCreateRequest;
+import com.jgji.sokdak.domain.place.presentation.request.PlaceCreateRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

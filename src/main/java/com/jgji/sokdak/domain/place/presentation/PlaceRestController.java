@@ -1,7 +1,7 @@
 package com.jgji.sokdak.domain.place.presentation;
 
 import com.jgji.sokdak.domain.place.application.PlaceFacade;
-import com.jgji.sokdak.domain.place.presentation.dto.PlaceCreateRequest;
+import com.jgji.sokdak.domain.place.presentation.request.PlaceCreateRequest;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

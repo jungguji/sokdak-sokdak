@@ -1,4 +1,4 @@
-package com.jgji.sokdak.domain.place.presentation.dto;
+package com.jgji.sokdak.domain.place.presentation.request;
 
 import com.jgji.sokdak.domain.place.domain.Address;
 import com.jgji.sokdak.global.exception.BusinessException;
