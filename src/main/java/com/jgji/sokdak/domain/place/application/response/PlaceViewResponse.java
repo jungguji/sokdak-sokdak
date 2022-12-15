@@ -1,6 +1,7 @@
-package com.jgji.sokdak.domain.place.presentation.response;
+package com.jgji.sokdak.domain.place.application.response;
 
 import com.jgji.sokdak.domain.place.domain.Address;
+import com.jgji.sokdak.domain.place.domain.Place;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,6 +22,15 @@ public class PlaceViewResponse {
         this.name = name;
         this.addressResponse = addressResponse;
         this.grade = grade;
+    }
+
+    public static PlaceViewResponse of(Place place) {
+        return PlaceViewResponse.builder()
+            .id(place.getId())
+            .name(place.getName())
+            .addressResponse(AddressResponse.of(place.getAddress()))
+            .grade(place.getGrade())
+            .build();
     }
 
     static class AddressResponse {

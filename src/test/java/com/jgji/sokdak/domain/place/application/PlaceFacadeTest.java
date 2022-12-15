@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.jgji.sokdak.domain.place.domain.PlaceRepository;
 import com.jgji.sokdak.domain.place.exception.AlreadyPlaceException;
-import com.jgji.sokdak.domain.place.presentation.request.AddressForm;
-import com.jgji.sokdak.domain.place.presentation.request.PlaceCreateRequest;
+import com.jgji.sokdak.domain.place.application.request.AddressForm;
+import com.jgji.sokdak.domain.place.application.request.PlaceCreateRequest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
