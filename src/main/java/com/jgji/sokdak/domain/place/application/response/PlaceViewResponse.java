@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PlaceViewResponse {
 
     private long id;
@@ -33,6 +33,7 @@ public class PlaceViewResponse {
             .build();
     }
 
+    @Getter
     static class AddressResponse {
 
         private String road;

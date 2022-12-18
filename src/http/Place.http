@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
    "name": "우리집"
-  , "addressResponse": {
+  , "address": {
         "road": "도로명 주소"
         , "jibun": "지번 주소"
         , "zip": "06062"
@@ -13,5 +13,8 @@ Content-Type: application/json
   }
   , "categoryId": null
 }
+
+### 장소 조회
+GET http://localhost:8080/place/1
 
 ###

@@ -22,6 +22,10 @@ public class PlaceGrades {
     }
 
     public Double getGrade() {
+        if (this.grades.isEmpty()) {
+            return null;
+        }
+
         return this.grades
             .stream()
             .mapToDouble(PlaceGrade::getGradeTotal)

@@ -43,7 +43,7 @@ public class AddressForm {
     }
 
     protected Address toEntity() {
-        String pointWKT = String.format("POINT(%s %s)", latitude, longitude);
+        String pointWKT = String.format("POINT(%s %s)", this.latitude, this.longitude);
         Point point = null;
         try {
             point = (Point) new WKTReader().read(pointWKT);
