@@ -2,6 +2,7 @@ package com.jgji.sokdak.domain.review.domain;
 
 import com.jgji.sokdak.global.model.BaseEntity;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -51,6 +52,10 @@ public class Review extends BaseEntity {
         this.memberId = memberId;
         this.placeId = placeId;
         this.reviewImages = new ReviewImages(convertToReviewImages(images));
+    }
+
+    public Double getGrade() {
+        return this.grade.setScale(1, RoundingMode.CEILING).doubleValue();
     }
 
     public List<String> getImages() {

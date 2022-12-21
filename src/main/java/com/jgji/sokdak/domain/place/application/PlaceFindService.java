@@ -31,4 +31,8 @@ public class PlaceFindService {
 
         throw new AlreadyPlaceException();
     }
+
+    public Place findById(long id) {
+        return this.placeRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+    }
 }

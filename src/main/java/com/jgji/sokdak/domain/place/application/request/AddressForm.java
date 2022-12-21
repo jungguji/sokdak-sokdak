@@ -1,4 +1,4 @@
-package com.jgji.sokdak.domain.place.presentation.dto;
+package com.jgji.sokdak.domain.place.application.request;
 
 import com.jgji.sokdak.domain.place.domain.Address;
 import com.jgji.sokdak.global.exception.BusinessException;
@@ -43,7 +43,7 @@ public class AddressForm {
     }
 
     protected Address toEntity() {
-        String pointWKT = String.format("POINT(%s %s)", latitude, longitude);
+        String pointWKT = String.format("POINT(%s %s)", this.latitude, this.longitude);
         Point point = null;
         try {
             point = (Point) new WKTReader().read(pointWKT);

@@ -35,5 +35,6 @@ class ReviewFacadeTest {
 
         assertThat(is(review));
         assertThat(1).isEqualTo(review.getId());
+        assertThat(4.3).isEqualTo(review.getGrade());
     }
 }

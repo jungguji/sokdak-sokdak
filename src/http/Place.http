@@ -14,4 +14,7 @@ Content-Type: application/json
   , "categoryId": null
 }
 
+### 장소 조회
+GET http://localhost:8080/place/1
+
 ###

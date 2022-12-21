@@ -1,5 +1,6 @@
-package com.jgji.sokdak.domain.place.domain;
+package com.jgji.sokdak.domain.place.domain.grade;
 
+import com.jgji.sokdak.domain.place.domain.Place;
 import com.jgji.sokdak.global.model.BaseEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -20,7 +21,7 @@ public class PlaceGrade extends BaseEntity {
     @Column(name = "id", nullable = false, unique = true)
     private long id;
 
-    @Column(name = "grade_total")
+    @Column(name = "grade_total", columnDefinition = "DECIMAL(2,1)")
     private BigDecimal gradeTotal; // 그룹별 평점 평균
 
     @Column(name = "group_id", nullable = false)
@@ -35,5 +36,9 @@ public class PlaceGrade extends BaseEntity {
         this.gradeTotal = gradeTotal;
         this.groupId = groupId;
         this.place = place;
+    }
+
+    public Double getGradeTotal() {
+        return this.gradeTotal.doubleValue();
     }
 }
