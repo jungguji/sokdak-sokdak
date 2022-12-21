@@ -1,4 +1,4 @@
-package com.jgji.sokdak.domain.review.domain;
+package com.jgji.sokdak.domain.review.domain.image;
 
 import com.jgji.sokdak.domain.review.exception.NoImageException;
 import java.util.ArrayList;

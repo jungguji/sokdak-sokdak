@@ -1,4 +1,4 @@
-package com.jgji.sokdak.domain.review.presentation.request;
+package com.jgji.sokdak.domain.review.application.dto.request;
 
 import com.jgji.sokdak.domain.review.domain.Review;
 import java.math.BigDecimal;

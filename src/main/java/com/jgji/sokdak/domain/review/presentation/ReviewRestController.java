@@ -1,7 +1,7 @@
 package com.jgji.sokdak.domain.review.presentation;
 
 import com.jgji.sokdak.domain.review.application.ReviewFacade;
-import com.jgji.sokdak.domain.review.presentation.request.ReviewCreateRequest;
+import com.jgji.sokdak.domain.review.application.dto.request.ReviewCreateRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

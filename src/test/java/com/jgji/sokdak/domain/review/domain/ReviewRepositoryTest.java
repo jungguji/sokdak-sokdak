@@ -3,6 +3,7 @@ package com.jgji.sokdak.domain.review.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.internal.bytebuddy.matcher.ElementMatchers.is;
 
+import com.jgji.sokdak.domain.review.domain.image.ReviewImage;
 import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
