@@ -2,8 +2,8 @@ package com.jgji.sokdak.domain.group.application;
 
 import com.jgji.sokdak.domain.group.domain.Group;
 import com.jgji.sokdak.domain.group.domain.GroupRepository;
-import com.jgji.sokdak.domain.member.application.MemberGroupFindService;
-import com.jgji.sokdak.domain.member.application.MemberGroupSaveService;
+import com.jgji.sokdak.domain.member.application.membergroup.MemberGroupFindService;
+import com.jgji.sokdak.domain.member.application.membergroup.MemberGroupSaveService;
 import com.jgji.sokdak.domain.member.domain.Member;
 import com.jgji.sokdak.domain.member.domain.MemberGroup;
 import lombok.RequiredArgsConstructor;
