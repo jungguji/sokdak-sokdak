@@ -3,6 +3,7 @@ package com.jgji.sokdak.domain.review.presentation;
 import com.jgji.sokdak.domain.review.application.ReviewFacade;
 import com.jgji.sokdak.domain.review.application.dto.request.ReviewCreateRequest;
 import com.jgji.sokdak.domain.review.application.dto.response.ReviewViewResponse;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -29,5 +30,11 @@ public class ReviewRestController {
     @GetMapping(path = "/review/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ReviewViewResponse create(@PathVariable("id") long id) {
         return this.reviewFacade.view(id);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping(path = "/review/my", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<ReviewViewResponse> myReviews(long memberId) {
+        return this.reviewFacade.findAllByMemberId(memberId);
     }
 }
