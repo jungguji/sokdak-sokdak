@@ -27,7 +27,7 @@ public class ReviewRestController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(path = "/review/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ReviewViewResponse create(@PathVariable("id") Long id) {
+    public ReviewViewResponse create(@PathVariable("id") long id) {
         return this.reviewFacade.view(id);
     }
 }
