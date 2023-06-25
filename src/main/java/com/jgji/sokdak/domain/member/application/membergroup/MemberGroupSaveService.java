@@ -1,4 +1,4 @@
-package com.jgji.sokdak.domain.member.application;
+package com.jgji.sokdak.domain.member.application.membergroup;
 
 import com.jgji.sokdak.domain.member.domain.MemberGroup;
 import com.jgji.sokdak.domain.member.domain.MemberGroupRepository;

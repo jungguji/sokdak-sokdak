@@ -1,5 +1,6 @@
-package com.jgji.sokdak.domain.review.domain;
+package com.jgji.sokdak.domain.review.domain.image;
 
+import com.jgji.sokdak.domain.review.domain.Review;
 import com.jgji.sokdak.global.model.BaseEntity;
 import lombok.AccessLevel;
 import lombok.Builder;

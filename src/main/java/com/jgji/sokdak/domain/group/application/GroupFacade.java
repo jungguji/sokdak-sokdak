@@ -6,7 +6,7 @@ import com.jgji.sokdak.domain.group.exception.ConfirmationPhraseMismatchExceptio
 import com.jgji.sokdak.domain.group.presentation.dto.GroupCreateRequest;
 import com.jgji.sokdak.domain.group.presentation.dto.GroupJoinResponse;
 import com.jgji.sokdak.domain.group.presentation.dto.GroupSecessionRequest;
-import com.jgji.sokdak.domain.member.application.MemberGroupFindService;
+import com.jgji.sokdak.domain.member.application.membergroup.MemberGroupFindService;
 import com.jgji.sokdak.domain.member.domain.Member;
 import com.jgji.sokdak.domain.member.exception.AlreadyJoinedException;
 import com.jgji.sokdak.domain.member.exception.UnjoinedGroupException;

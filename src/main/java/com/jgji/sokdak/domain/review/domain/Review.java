@@ -1,5 +1,7 @@
 package com.jgji.sokdak.domain.review.domain;
 
+import com.jgji.sokdak.domain.review.domain.image.ReviewImage;
+import com.jgji.sokdak.domain.review.domain.image.ReviewImages;
 import com.jgji.sokdak.global.model.BaseEntity;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
